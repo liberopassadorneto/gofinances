@@ -135,41 +135,42 @@ export function Register() {
           <Fields>
             <InputForm
               control={control}
-              name='name'
-              placeholder='Nome'
-              autoCapitalize='sentences'
+              name="name"
+              placeholder="Nome"
+              autoCapitalize="sentences"
               autoCorrect={false}
               error={errors.name && errors.name.message}
             />
             <InputForm
               control={control}
-              name='amount'
-              placeholder='Preço'
-              keyboardType='numeric'
+              name="amount"
+              placeholder="Preço"
+              keyboardType="numeric"
               error={errors.amount && errors.amount.message}
             />
             <TransactionTypes>
               <TransactionTypeButton
-                type='up'
-                title='Income'
+                type="up"
+                title="Income"
                 onPress={() => handleTransactionTypeSelect('positive')}
                 isActive={transactionType === 'positive'}
               />
               <TransactionTypeButton
-                type='down'
-                title='Outcome'
+                type="down"
+                title="Outcome"
                 onPress={() => handleTransactionTypeSelect('negative')}
                 isActive={transactionType === 'negative'}
               />
             </TransactionTypes>
             <CategorySelectButton
+              testID="button-category"
               title={category.name}
               onPress={handleOpenSelectCategoryModal}
             />
           </Fields>
-          <Button title='Enviar' onPress={handleSubmit(handleRegister)} />
+          <Button title="Enviar" onPress={handleSubmit(handleRegister)} />
         </Form>
-        <Modal visible={categoryModalOpen}>
+        <Modal testID="modal-category" visible={categoryModalOpen}>
           <CategorySelect
             category={category}
             setCategory={setCategory}

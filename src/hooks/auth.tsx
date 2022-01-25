@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as AuthSession from 'expo-auth-session';
 import React, {
@@ -8,6 +9,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+
+jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
 const { CLIENT_ID } = process.env;
 const { REDIRECT_URI } = process.env;
