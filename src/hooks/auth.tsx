@@ -98,11 +98,13 @@ function AuthProvider({ children }: AuthProviderProps) {
       // ! -> That's the non-null assertion operator. It is a way to tell the compiler "this expression cannot be null or undefined here, so don't complain about the possibility of it being null or undefined." Sometimes the type checker is unable to make that determination itself.
 
       if (credential) {
+        const name = credential.fullName!.givenName;
+        const photo = `https://ui-avatars.com/api/?name=${name}&length=3`;
         const userLogged = {
           id: String(credential.user),
           email: credential.email!,
-          name: credential.fullName!.givenName!,
-          photo: undefined,
+          name,
+          photo,
         };
 
         setUser(userLogged);
